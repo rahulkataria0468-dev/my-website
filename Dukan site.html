@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RK Vision InfoTech - CCTV & IT Solutions</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              900: '#164e63',
+            },
+            dark: {
+              950: '#090d16',
+              900: '#0f172a',
+              850: '#131e36',
+              800: '#1e293b',
+              700: '#334155'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'pulse-fast': 'pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'scanline': 'scan 3s linear infinite',
+          },
+          keyframes: {
+            scan: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(1000%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    .cctv-overlay-grid {
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #06b6d4;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-dark-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white custom-scrollbar">
+
+  <!-- Top Utility Bar -->
+  <header class="w-full bg-dark-900 border-b border-dark-800 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center space-x-4">
+        <span class="flex items-center gap-1.5 text-brand-400">
+          <i data-lucide="shield-check" class="w-4 h-4"></i> Certified CCTV & IT Partner
+        </span>
+        <span class="hidden sm:inline-block text-dark-700">|</span>
+        <span class="hidden sm:flex items-center gap-1">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i> Mon - Sun: 9:00 AM - 8:00 PM
+        </span>
+      </div>
+      <div class="flex items-center space-x-3 ml-auto">
+        <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition font-medium">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Find Store
+        </a>
+        <span class="text-dark-700">|</span>
+        <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition font-medium">
+          <i data-lucide="facebook" class="w-3.5 h-3.5"></i> Facebook
+        </a>
+        <span class="text-dark-700">|</span>
+        <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-red-400 hover:text-red-300 transition font-medium">
+          <i data-lucide="youtube" class="w-3.5 h-3.5"></i> YouTube
+        </a>
+        <span class="text-dark-700">|</span>
+        <a href="tel:+919813680468" class="hover:text-brand-400 transition flex items-center gap-1 font-semibold text-slate-300">
+          <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brand-400"></i> +91 98136 80468
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Main Navbar -->
+  <nav class="sticky top-0 z-50 bg-dark-950/90 backdrop-blur-md border-b border-dark-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+            <i data-lucide="cctv" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-xl tracking-tight text-white flex items-center">
+              RK Vision Info<span class="text-brand-400">TECH</span>
+              <span class="ml-1 text-[10px] bg-brand-500/10 text-brand-400 border border-brand-500/30 px-1.5 py-0.5 rounded uppercase">Solutions</span>
+            </div>
+            <p class="text-[11px] text-slate-400 tracking-wider uppercase font-medium">CCTV & IT Infrastructure</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden lg:flex items-center space-x-7 text-sm font-medium">
+          <a href="#hero" class="text-slate-300 hover:text-brand-400 transition">Home</a>
+          <a href="#services" class="text-slate-300 hover:text-brand-400 transition">Services</a>
+          <a href="#calculator" class="text-slate-300 hover:text-brand-400 transition flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping inline-block"></span> Cost Estimator
+          </a>
+          <a href="#packages" class="text-slate-300 hover:text-brand-400 transition">Packages</a>
+          <a href="#youtube" class="text-red-400 hover:text-red-300 transition flex items-center gap-1">
+            <i data-lucide="youtube" class="w-4 h-4"></i> Video Demos
+          </a>
+          <a href="#contact" class="text-slate-300 hover:text-brand-400 transition">Contact & Shop</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hidden sm:flex items-center gap-2.5">
+          <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 transition" title="Get Directions on Google Maps">
+            <i data-lucide="map-pin" class="w-4 h-4"></i>
+          </a>
+          <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg text-blue-400 border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 transition" title="Follow us on Facebook">
+            <i data-lucide="facebook" class="w-4 h-4"></i>
+          </a>
+          <a href="https://www.youtube.com/@RKVisionInfotech?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 rounded-lg text-red-400 border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-xs font-semibold flex items-center gap-1.5 transition">
+            <i data-lucide="youtube" class="w-4 h-4 text-red-500"></i> Subscribe
+          </a>
+          <a href="https://wa.me/919050748933?text=Hello%20RK%20Vision%20InfoTech,%20I%20am%20interested%20in%20CCTV%20and%20IT%20Solutions." target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-xs font-semibold flex items-center gap-2 transition">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+          </a>
+        </div>
+
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-dark-900 border-b border-dark-800 px-4 pt-3 pb-6 space-y-3">
+      <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800">Home</a>
+      <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800">Services</a>
+      <a href="#calculator" class="block px-3 py-2 rounded-md text-base font-medium text-brand-400 hover:bg-dark-800">Cost Estimator</a>
+      <a href="#packages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800">Packages</a>
+      <a href="#youtube" class="block px-3 py-2 rounded-md text-base font-medium text-red-400 hover:bg-dark-800">YouTube Channel</a>
+      <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800">Contact & Shop</a>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 font-semibold text-sm flex items-center justify-center gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4"></i> Open Google Maps Direction
+        </a>
+        <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm flex items-center justify-center gap-2">
+          <i data-lucide="facebook" class="w-4 h-4"></i> Visit Facebook Page
+        </a>
+        <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-red-600 text-white font-semibold text-sm flex items-center justify-center gap-2">
+          <i data-lucide="youtube" class="w-4 h-4"></i> Watch YouTube Channel
+        </a>
+        <a href="https://wa.me/919050748933" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-emerald-600 text-white font-semibold text-sm">
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+    <div class="absolute inset-0 cctv-overlay-grid pointer-events-none opacity-40"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-850 border border-brand-500/30 text-xs font-semibold text-brand-400">
+            <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+            #1 CCTV & IT Solutions Partner in Hathin & Mewat Region
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+            Secure What Matters. <br>
+            <span class="bg-gradient-to-r from-brand-400 via-cyan-200 to-blue-500 bg-clip-text text-transparent">Smart CCTV & IT</span> Infrastructure.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
+            From HD & 4K AI CCTV cameras to enterprise Wi-Fi, biometric access, and complete computer hardware support — we supply, install, and service homes, retail stores, and commercial premises.
+          </p>
+
+          <!-- Badges -->
+          <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+            <div class="p-3 rounded-xl bg-dark-900 border border-dark-800 flex flex-col items-center sm:items-start">
+              <i data-lucide="shield-alert" class="w-5 h-5 text-brand-400 mb-1"></i>
+              <span class="text-sm font-bold text-white">100% Genuine</span>
+              <span class="text-xs text-slate-400">Brand Warranty</span>
+            </div>
+            <div class="p-3 rounded-xl bg-dark-900 border border-dark-800 flex flex-col items-center sm:items-start">
+              <i data-lucide="truck" class="w-5 h-5 text-emerald-400 mb-1"></i>
+              <span class="text-sm font-bold text-white">Same-Day</span>
+              <span class="text-xs text-slate-400">Site Survey</span>
+            </div>
+            <div class="p-3 rounded-xl bg-dark-900 border border-dark-800 flex flex-col items-center sm:items-start">
+              <i data-lucide="map-pin" class="w-5 h-5 text-emerald-400 mb-1"></i>
+              <span class="text-sm font-bold text-white">Local Store</span>
+              <span class="text-xs text-slate-400">Uttawar Mod</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-3">
+            <a href="#calculator" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-400 hover:to-blue-500 text-white font-bold text-sm tracking-wide shadow-xl shadow-brand-500/20 flex items-center gap-2 transform active:scale-95 transition">
+              <i data-lucide="calculator" class="w-4 h-4"></i> Estimate Setup Cost
+            </a>
+            <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 font-semibold text-sm flex items-center gap-2 transition">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i> Store Location
+            </a>
+            <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-red-600/10 hover:bg-red-600/20 border border-red-500/30 text-red-400 font-semibold text-sm flex items-center gap-2 transition">
+              <i data-lucide="youtube" class="w-4 h-4 text-red-500"></i> YouTube
+            </a>
+          </div>
+
+          <!-- Brands logos preview -->
+          <div class="pt-4 border-t border-dark-800/80">
+            <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">Authorized Partners & System Integrator</p>
+            <div class="flex flex-wrap items-center gap-6 opacity-75 grayscale hover:grayscale-0 transition duration-300">
+              <span class="font-black text-slate-300 tracking-tighter text-base">HIKVISION</span>
+              <span class="font-extrabold text-red-500 tracking-wide text-base">CP PLUS</span>
+              <span class="font-bold text-blue-400 text-base">Dahua</span>
+              <span class="font-semibold text-slate-300 text-base">CISCO</span>
+              <span class="font-bold text-emerald-400 text-base">TP-Link</span>
+              <span class="font-semibold text-cyan-400 text-base">D-Link</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive CCTV Live Surveillance Monitor Simulation -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl p-1 bg-gradient-to-b from-brand-500/30 via-dark-800 to-dark-900 shadow-2xl">
+            <div class="bg-dark-950 rounded-[14px] overflow-hidden border border-dark-800">
+              
+              <!-- Monitor Header -->
+              <div class="bg-dark-900 px-4 py-2.5 flex items-center justify-between border-b border-dark-800 text-xs">
+                <div class="flex items-center gap-2">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse-fast"></div>
+                  <span class="font-mono text-red-400 font-semibold tracking-wider uppercase">LIVE REC: CAM_01</span>
+                </div>
+                <div class="flex items-center gap-3 text-slate-400 font-mono text-[11px]">
+                  <span id="cam-timestamp">2026-10-09 11:42:08</span>
+                  <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded">4K 60FPS</span>
+                </div>
+              </div>
+
+              <!-- Live Viewport Canvas / Frame -->
+              <div class="relative aspect-video bg-dark-900 overflow-hidden flex items-center justify-center group select-none">
+                <svg viewBox="0 0 400 225" class="w-full h-full object-cover opacity-60">
+                  <rect width="400" height="225" fill="#090f1d"/>
+                  <polygon points="50,40 350,40 380,180 20,180" fill="#0d1b2e" stroke="#1e293b" stroke-width="1"/>
+                  <rect x="70" y="60" width="60" height="100" fill="#111c33" stroke="#0284c7" stroke-width="0.8" rx="2"/>
+                  <line x1="75" y1="75" x2="125" y2="75" stroke="#38bdf8" stroke-width="1"/>
+                  <line x1="75" y1="90" x2="125" y2="90" stroke="#38bdf8" stroke-width="1"/>
+                  <line x1="75" y1="105" x2="125" y2="105" stroke="#38bdf8" stroke-width="1"/>
+                  <circle cx="80" cy="70" r="1.5" fill="#22c55e"/>
+                  <circle cx="85" cy="70" r="1.5" fill="#22c55e"/>
+                  <circle cx="90" cy="70" r="1.5" fill="#ef4444"/>
+                  <polygon points="210,100 320,100 330,150 200,150" fill="#14243d" stroke="#334155"/>
+                  <rect x="230" y="85" width="25" height="15" fill="#0369a1" rx="1"/>
+                </svg>
+
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent h-16 w-full animate-scanline pointer-events-none"></div>
+
+                <div id="target-box" class="absolute w-28 h-28 border border-dashed border-brand-400/80 rounded transition-all duration-700 ease-out flex flex-col justify-between p-1" style="top: 25%; left: 45%;">
+                  <div class="flex justify-between items-center text-[9px] font-mono text-cyan-300 bg-dark-950/70 px-1 py-0.5 rounded">
+                    <span>AI_DETECT</span>
+                    <span>99.4%</span>
+                  </div>
+                  <div class="text-[9px] font-mono text-emerald-400 bg-dark-950/70 px-1 rounded self-start">
+                    PERSON: SECURED
+                  </div>
+                </div>
+
+                <div class="absolute top-3 left-3 text-[10px] font-mono text-slate-300 bg-dark-950/70 backdrop-blur px-2 py-1 rounded border border-dark-800">
+                  PTZ: ONLINE [360° AUTO-TRACK]
+                </div>
+                <div class="absolute bottom-3 left-3 text-[10px] font-mono text-slate-300 bg-dark-950/70 px-2 py-1 rounded border border-dark-800 flex items-center gap-1.5">
+                  <i data-lucide="wifi" class="w-3 h-3 text-emerald-400"></i> NVR_LINK: 1000 Mbps
+                </div>
+                <div class="absolute bottom-3 right-3 flex items-center gap-1 text-[10px] font-mono text-cyan-300 bg-dark-950/70 px-2 py-1 rounded border border-dark-800">
+                  <i data-lucide="eye" class="w-3 h-3"></i> SMART NIGHT COLOR+
+                </div>
+              </div>
+
+              <!-- Monitor Control Buttons -->
+              <div class="bg-dark-900 p-3 flex items-center justify-between border-t border-dark-800">
+                <div class="flex items-center gap-2">
+                  <button onclick="switchCamera('CAM 01 - Main Entrance')" class="cam-btn px-2.5 py-1 text-xs font-mono rounded bg-brand-500/20 text-brand-400 border border-brand-500/40">CAM 1</button>
+                  <button onclick="switchCamera('CAM 02 - Server Room')" class="cam-btn px-2.5 py-1 text-xs font-mono rounded bg-dark-800 text-slate-400 hover:text-white">CAM 2</button>
+                  <button onclick="switchCamera('CAM 03 - Cash Counter')" class="cam-btn px-2.5 py-1 text-xs font-mono rounded bg-dark-800 text-slate-400 hover:text-white">CAM 3</button>
+                </div>
+                <button onclick="triggerAlarmTest()" class="px-3 py-1 text-xs font-semibold rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 flex items-center gap-1 transition">
+                  <i data-lucide="bell" class="w-3 h-3"></i> Test Siren
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Showcase Section -->
+  <section id="youtube" class="py-20 bg-dark-900/80 border-y border-dark-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-bold border border-red-500/20 mb-2">
+            <i data-lucide="youtube" class="w-4 h-4 text-red-500"></i> YouTube & Social Showcase
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Watch Our Real Work & Live Demos</h2>
+          <p class="text-slate-400 text-sm mt-2 max-w-xl">
+            CCTV night vision clarity, actual site installations, and unboxing reviews available directly on our social media handles.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/25 transition">
+            <i data-lucide="map-pin" class="w-4 h-4"></i> Store Location
+          </a>
+          <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/25 transition">
+            <i data-lucide="facebook" class="w-4 h-4"></i> Facebook Page
+          </a>
+          <a href="https://www.youtube.com/@RKVisionInfotech?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-red-600/25 transition">
+            <i data-lucide="youtube" class="w-4 h-4"></i> Subscribe YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Video Card 1 -->
+        <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="group bg-dark-950 border border-dark-800 rounded-2xl overflow-hidden hover:border-red-500/50 transition duration-300">
+          <div class="relative aspect-video bg-dark-900 flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent z-10"></div>
+            <div class="w-14 h-14 rounded-full bg-red-600/90 group-hover:bg-red-500 group-hover:scale-110 flex items-center justify-center text-white shadow-xl transition transform z-20">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-0.5"></i>
+            </div>
+            <div class="absolute bottom-3 left-3 z-20">
+              <span class="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded font-mono font-bold uppercase">Live Demo</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h4 class="text-base font-bold text-white group-hover:text-red-400 transition mb-1">Color Night Vision CCTV Testing</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Real footage comparison between standard IR black & white vs Full Color 24/7 smart cameras.</p>
+          </div>
+        </a>
+
+        <!-- Video Card 2 -->
+        <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="group bg-dark-950 border border-dark-800 rounded-2xl overflow-hidden hover:border-red-500/50 transition duration-300">
+          <div class="relative aspect-video bg-dark-900 flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent z-10"></div>
+            <div class="w-14 h-14 rounded-full bg-red-600/90 group-hover:bg-red-500 group-hover:scale-110 flex items-center justify-center text-white shadow-xl transition transform z-20">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-0.5"></i>
+            </div>
+            <div class="absolute bottom-3 left-3 z-20">
+              <span class="text-[10px] bg-cyan-600 text-white px-2 py-0.5 rounded font-mono font-bold uppercase">Installation</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h4 class="text-base font-bold text-white group-hover:text-red-400 transition mb-1">Shop & Commercial 8-Cam Fitting</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Neat PVC casing, rack dressing, and wire concealing standards followed by our technicians.</p>
+          </div>
+        </a>
+
+        <!-- Video Card 3 -->
+        <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="group bg-dark-950 border border-dark-800 rounded-2xl overflow-hidden hover:border-red-500/50 transition duration-300">
+          <div class="relative aspect-video bg-dark-900 flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent z-10"></div>
+            <div class="w-14 h-14 rounded-full bg-red-600/90 group-hover:bg-red-500 group-hover:scale-110 flex items-center justify-center text-white shadow-xl transition transform z-20">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-0.5"></i>
+            </div>
+            <div class="absolute bottom-3 left-3 z-20">
+              <span class="text-[10px] bg-purple-600 text-white px-2 py-0.5 rounded font-mono font-bold uppercase">Tutorial</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h4 class="text-base font-bold text-white group-hover:text-red-400 transition mb-1">Mobile Phone Live View Setup Guide</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">How to view your CCTV cameras remotely on Android & iPhone from anywhere in the world.</p>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-2">Our Capabilities</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Full-Spectrum CCTV & IT Solutions</h3>
+        <p class="text-slate-400 mt-3 text-base">We provide turnkey hardware supply, neat structured cabling, configuration, mobile streaming setup, and continuous maintenance.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Service 1: CCTV Surveillance -->
+        <div class="bg-dark-950 p-7 rounded-2xl border border-dark-800 hover:border-brand-500/50 transition-all group duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-dark-950 transition">
+            <i data-lucide="video" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">CCTV Cameras & Surveillance</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            High definition analog and IP cameras (2MP to 4K Ultra HD). Night color vision, PTZ 360° motion tracking, wire-free Wi-Fi cameras, and secure mobile phone streaming anywhere.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-5">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-400"></i> Full Color Night Vision & Audio Mic</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-400"></i> Hikvision, CP PLUS & Dahua NVR/DVR</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-400"></i> Cloud Storage & Remote Live View</li>
+          </ul>
+          <a href="#calculator" class="text-xs font-semibold text-brand-400 group-hover:text-cyan-300 inline-flex items-center gap-1">
+            Configure Cameras <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Service 2: Biometric & Access Control -->
+        <div class="bg-dark-950 p-7 rounded-2xl border border-dark-800 hover:border-brand-500/50 transition-all group duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-dark-950 transition">
+            <i data-lucide="fingerprint" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Biometrics & Access Control</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Staff attendance tracking and secure door entry with AI Face recognition, RFID cards, and optical fingerprint sensors. Integrated with HR payroll software.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-5">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-purple-400"></i> AI Face Detection & Mask Scanning</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-purple-400"></i> Electromagnetic Door Locks (EM Lock)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-purple-400"></i> eSSL, Realtime & ZKTeco Devices</li>
+          </ul>
+          <a href="#contact" class="text-xs font-semibold text-purple-400 inline-flex items-center gap-1">
+            Inquire Setup <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Service 3: Networking & Structured Cabling -->
+        <div class="bg-dark-950 p-7 rounded-2xl border border-dark-800 hover:border-brand-500/50 transition-all group duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-dark-950 transition">
+            <i data-lucide="network" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Networking & Wi-Fi Setup</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Enterprise high-speed office networking, PoE switches, fiber optic splicing, server rack dressing, and zero dead-zone Mesh Wi-Fi coverage for homes and commercial floors.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-5">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-400"></i> Cat6 / Cat6A Gigabit Structured Cabling</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-400"></i> Wall Mount & Floor Standing Server Racks</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-400"></i> Cisco, D-Link, Ruijie & TP-Link Omada</li>
+          </ul>
+          <a href="#contact" class="text-xs font-semibold text-blue-400 inline-flex items-center gap-1">
+            Plan Network <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Service 4: Computer / Laptop Repair & AMC -->
+        <div class="bg-dark-950 p-7 rounded-2xl border border-dark-800 hover:border-brand-500/50 transition-all group duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-dark-950 transition">
+            <i data-lucide="wrench" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Computer Repair & Annual AMC</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Desktop, laptop, and server motherboard chip-level repair, SSD/RAM speed upgrades, OS formatting, and hassle-free Annual Maintenance Contracts (AMC) for businesses.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-5">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Quick On-site & In-shop diagnostics</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Genuine Parts & Warranty Replacement</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Monthly Preventive Hardware Cleaning</li>
+          </ul>
+          <a href="#contact" class="text-xs font-semibold text-emerald-400 inline-flex items-center gap-1">
+            Book Tech Support <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Service 5: Video Door Phones & Intercom -->
+        <div class="bg-dark-950 p-7 rounded-2xl border border-dark-800 hover:border-brand-500/50 transition-all group duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-dark-950 transition">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Intercom & Video Door Phone</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Smart touch-screen video door phones (VDP) with mobile notification answering and multi-apartment EPABX intercom setups for societies, villas, and buildings.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-5">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-400"></i> 7-inch HD Color Touch Monitor</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-400"></i> Remote Door Unlocking via Phone App</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-400"></i> Multi-Apartment EPABX Matrix Setup</li>
+          </ul>
+          <a href="#contact" class="text-xs font-semibold text-amber-400 inline-flex items-center gap-1">
+            Get Pricing <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Service 6: Data Recovery & Cyber Security -->
+        <div class="bg-dark-950 p-7 rounded-2xl border border-dark-800 hover:border-brand-500/50 transition-all group duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-dark-950 transition">
+            <i data-lucide="hard-drive" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Data Recovery & Storage Backup</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Dead HDD/SSD recovery, NAS automated cloud backup setups, network firewall installations, and enterprise antivirus deployment for offices and shops.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-5">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-rose-400"></i> Synology & QNAP Automated Backups</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-rose-400"></i> Antivirus & Malware Cleanups</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-rose-400"></i> 100% Confidential Data Handling</li>
+          </ul>
+          <a href="#contact" class="text-xs font-semibold text-rose-400 inline-flex items-center gap-1">
+            Consult Specialist <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Cost Estimator Calculator -->
+  <section id="calculator" class="py-20 bg-dark-900/40 border-t border-dark-800 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-bold border border-brand-500/20 mb-2">
+          Transparent Pricing Tool
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Instant CCTV Setup Estimator</h2>
+        <p class="text-slate-400 text-sm mt-2">Select your custom requirements to calculate standard equipment, storage, and installation charges.</p>
+      </div>
+
+      <div class="bg-dark-900 border border-dark-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Configuration Controls -->
+          <div class="lg:col-span-7 space-y-7">
+            
+            <!-- Step 1: Camera Count -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-200 mb-3 flex items-center justify-between">
+                <span>1. Number of Cameras</span>
+                <span class="text-brand-400 text-xs font-mono font-bold" id="cam-count-label">4 Cameras</span>
+              </label>
+              <div class="grid grid-cols-4 gap-2.5">
+                <button type="button" onclick="setCameraCount(2)" class="calc-cam-btn py-3 px-2 rounded-xl border border-dark-800 bg-dark-950 hover:border-brand-500 text-center font-bold text-sm text-slate-300 transition" data-cams="2">2 Cam</button>
+                <button type="button" onclick="setCameraCount(4)" class="calc-cam-btn py-3 px-2 rounded-xl border border-brand-500 bg-brand-500/20 text-center font-bold text-sm text-brand-400 transition" data-cams="4">4 Cam</button>
+                <button type="button" onclick="setCameraCount(8)" class="calc-cam-btn py-3 px-2 rounded-xl border border-dark-800 bg-dark-950 hover:border-brand-500 text-center font-bold text-sm text-slate-300 transition" data-cams="8">8 Cam</button>
+                <button type="button" onclick="setCameraCount(16)" class="calc-cam-btn py-3 px-2 rounded-xl border border-dark-800 bg-dark-950 hover:border-brand-500 text-center font-bold text-sm text-slate-300 transition" data-cams="16">16 Cam</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Camera Type -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-200 mb-3">2. Technology & Resolution</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="cursor-pointer">
+                  <input type="radio" name="cam_type" value="hd" checked onchange="updateEstimator()" class="peer sr-only">
+                  <div class="p-4 rounded-xl border border-dark-800 bg-dark-950 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 transition">
+                    <div class="font-bold text-sm text-white flex items-center justify-between">
+                      <span>Full HD (1080p Analog)</span>
+                      <span class="text-xs text-brand-400 font-mono">Standard</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">Best for small shops, homes & budget installations.</p>
+                  </div>
+                </label>
+                
+                <label class="cursor-pointer">
+                  <input type="radio" name="cam_type" value="ip_4k" onchange="updateEstimator()" class="peer sr-only">
+                  <div class="p-4 rounded-xl border border-dark-800 bg-dark-950 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 transition">
+                    <div class="font-bold text-sm text-white flex items-center justify-between">
+                      <span>IP 4K Ultra HD (PoE)</span>
+                      <span class="text-xs text-cyan-400 font-mono">Premium</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">Facial clarity, number plate capture & built-in audio.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 3: Storage Retention -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-200 mb-3">3. Hard Drive Surveillance Storage</label>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="cursor-pointer">
+                  <input type="radio" name="storage" value="500gb" checked onchange="updateEstimator()" class="peer sr-only">
+                  <div class="p-3 text-center rounded-xl border border-dark-800 bg-dark-950 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 transition">
+                    <span class="block font-bold text-sm text-white">500 GB HDD</span>
+                    <span class="text-[11px] text-slate-400">~6-8 Days</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="storage" value="1tb" onchange="updateEstimator()" class="peer sr-only">
+                  <div class="p-3 text-center rounded-xl border border-dark-800 bg-dark-950 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 transition">
+                    <span class="block font-bold text-sm text-white">1 TB HDD</span>
+                    <span class="text-[11px] text-slate-400">~12-15 Days</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="storage" value="2tb" onchange="updateEstimator()" class="peer sr-only">
+                  <div class="p-3 text-center rounded-xl border border-dark-800 bg-dark-950 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 transition">
+                    <span class="block font-bold text-sm text-white">2 TB HDD</span>
+                    <span class="text-[11px] text-slate-400">~22+ Days</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 4: Installation & Cabling -->
+            <div class="p-4 rounded-xl bg-dark-950 border border-dark-800 flex items-center justify-between">
+              <div>
+                <span class="text-sm font-bold text-white block">Professional Installation & Fitting</span>
+                <span class="text-xs text-slate-400">Includes PVC conduits, BNC/RJ45 clips, power setup & mobile app config.</span>
+              </div>
+              <input type="checkbox" id="include_install" checked onchange="updateEstimator()" class="w-5 h-5 rounded border-dark-700 bg-dark-900 text-brand-500 focus:ring-brand-500">
+            </div>
+
+          </div>
+
+          <!-- Price Summary Card -->
+          <div class="lg:col-span-5 bg-dark-950 border border-dark-800 p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-dark-800">
+                <h3 class="font-bold text-base text-white">Package Breakdown</h3>
+                <span class="text-xs bg-brand-500/10 text-brand-400 px-2.5 py-1 rounded-full font-semibold">Instant Quote</span>
+              </div>
+
+              <!-- Itemized List -->
+              <div class="py-4 space-y-3 text-xs">
+                <div class="flex justify-between text-slate-300">
+                  <span id="summary-cam-desc">4x HD Night Vision Cameras</span>
+                  <span class="font-mono font-medium" id="summary-cam-price">₹7,200</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span id="summary-nvr-desc">4-Channel DVR/NVR Hub</span>
+                  <span class="font-mono font-medium" id="summary-nvr-price">₹4,500</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span id="summary-storage-desc">500GB Consistent Hard Drive</span>
+                  <span class="font-mono font-medium" id="summary-storage-price">₹2,100</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span id="summary-power-desc">SMPS Power + Connectors</span>
+                  <span class="font-mono font-medium" id="summary-power-price">₹1,200</span>
+                </div>
+                <div class="flex justify-between text-slate-300" id="row-install">
+                  <span>On-site Installation</span>
+                  <span class="font-mono font-medium" id="summary-install-price">₹1,600</span>
+                </div>
+              </div>
+
+              <!-- Total Estimation -->
+              <div class="pt-4 border-t border-dark-800 mt-2">
+                <div class="text-xs text-slate-400">Estimated Total (Inclusive of All)</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <div class="text-3xl sm:text-4xl font-extrabold text-white font-mono" id="total-price">₹16,600*</div>
+                  <span class="text-xs text-emerald-400 font-semibold">+ 1 Yr Warranty</span>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">*Cabling charged as per actual meter running on site.</p>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-6 space-y-3">
+              <button onclick="bookCalculatedQuote()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-400 hover:to-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-brand-500/25 transition">
+                Book Site Inspection with This Plan
+              </button>
+              <div class="flex items-center justify-center gap-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> No Advance Fee</span>
+                <span class="flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Free Live Demo</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ready Packages Section -->
+  <section id="packages" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-2">Ready Combos</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Popular Ready-to-Install Packages</h3>
+        <p class="text-slate-400 mt-3 text-base">Carefully engineered setups tailored for residential homes, retail shops, and corporate IT operations.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Package 1: Residential 4-Cam -->
+        <div class="bg-dark-950 rounded-2xl border border-dark-800 p-7 flex flex-col justify-between hover:border-slate-600 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full">Home & Villa</span>
+              <span class="text-xs text-slate-400">Standard</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-2">4-Cam Smart Home Pack</h4>
+            <p class="text-slate-400 text-xs mb-6">Complete surveillance for front gate, street view, living area, and parking.</p>
+            
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">
+              ₹14,999 <span class="text-xs text-slate-400 font-normal">/ all-inclusive</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-300 pb-6 border-b border-dark-800">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> 4x Full HD 2MP Night Vision Cameras</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> 4-Channel DVR with HDMI Output</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> 1TB Seagate Surveillance Hard Drive</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> Complete Power Supply & Connectors</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> Mobile Phone Live Monitoring App</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> 1-Year Comprehensive On-Site Warranty</li>
+            </ul>
+          </div>
+
+          <button onclick="bookSpecificPlan('4-Cam Smart Home Pack')" class="w-full mt-6 py-3 rounded-xl bg-dark-850 hover:bg-dark-800 text-white font-semibold text-xs border border-dark-700 transition">
+            Choose Home Pack
+          </button>
+        </div>
+
+        <!-- Package 2: Commercial 8-Cam (Highlighted) -->
+        <div class="bg-dark-950 rounded-2xl border-2 border-brand-500 p-7 flex flex-col justify-between relative shadow-2xl shadow-brand-500/10">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-500 to-blue-600 text-white text-[11px] font-extrabold tracking-wider uppercase px-4 py-1 rounded-full shadow-md">
+            Most Popular Choice
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-cyan-400 bg-brand-500/10 px-3 py-1 rounded-full">Shop & Office</span>
+              <span class="text-xs text-brand-400 font-semibold">High Definition</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-2">8-Cam Commercial Pack</h4>
+            <p class="text-slate-400 text-xs mb-6">Designed for showrooms, offices, warehouses, and billing counters.</p>
+            
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">
+              ₹27,500 <span class="text-xs text-slate-400 font-normal">/ all-inclusive</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-300 pb-6 border-b border-dark-800">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-400 shrink-0"></i> 8x HD Cameras (4 Dome Indoor + 4 Bullet Outdoor)</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-400 shrink-0"></i> Built-in Audio Mic for Cash Counters</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-400 shrink-0"></i> 8-Channel Smart DVR (AI Human/Vehicle Filter)</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-400 shrink-0"></i> 2TB Western Digital Purple Surveillance HDD</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-400 shrink-0"></i> 8-Port Centralized Power Supply</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-400 shrink-0"></i> 2-Year Equipment Warranty & Free Routine Check</li>
+            </ul>
+          </div>
+
+          <button onclick="bookSpecificPlan('8-Cam Commercial Pack')" class="w-full mt-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-400 hover:to-blue-500 text-white font-bold text-xs shadow-md transition">
+            Book Commercial Pack
+          </button>
+        </div>
+
+        <!-- Package 3: Complete Enterprise IT & Security -->
+        <div class="bg-dark-950 rounded-2xl border border-dark-800 p-7 flex flex-col justify-between hover:border-slate-600 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full">Turnkey Enterprise</span>
+              <span class="text-xs text-slate-400">Total Setup</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-2">Complete IT & CCTV Suite</h4>
+            <p class="text-slate-400 text-xs mb-6">Complete hardware, biometrics, Wi-Fi mesh, and surveillance infrastructure.</p>
+            
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">
+              ₹48,900 <span class="text-xs text-slate-400 font-normal">/ starter</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-300 pb-6 border-b border-dark-800">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> 8x 4K IP PoE High-Speed Cameras</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> AI Biometric Face & Fingerprint Access Device</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> Gigabit 8-Port PoE Switch + Cat6 Cabling</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> 6U Server/Network Rack with Cable Organizer</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> 4TB Storage for Extended Video History</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> Priority 4-Hour On-Site Tech Support SLA</li>
+            </ul>
+          </div>
+
+          <button onclick="bookSpecificPlan('Complete IT & CCTV Suite')" class="w-full mt-6 py-3 rounded-xl bg-dark-850 hover:bg-dark-800 text-white font-semibold text-xs border border-dark-700 transition">
+            Inquire Enterprise Suite
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 relative bg-dark-900/60 border-t border-dark-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Connect With Us</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Visit Our Shop or Request a Site Visit</h2>
+        <p class="text-slate-400 text-sm mt-2">Fill the form below, call our direct numbers, or visit our store at Uttawar Mod for a live camera demo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Shop Location & Contact Info -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-dark-900 border border-dark-800 rounded-2xl p-7 space-y-6">
+            <h3 class="text-xl font-bold text-white">Shop Headquarters</h3>
+
+            <div class="space-y-4 text-xs">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="map-pin" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="font-bold text-white text-sm block">Store Address</span>
+                  <p class="text-slate-400 leading-relaxed">
+                    Near Jama Masjid, New Market, Hathin Road, Uttawar Mod, 121103 (HR).
+                  </p>
+                  <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold mt-1">
+                    <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Get Live Directions
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="font-bold text-white text-sm block">Direct Phone / Support</span>
+                  <p class="text-slate-300 font-medium">+91 98136 80468 / +91 90507 48933</p>
+                  <p class="text-[11px] text-emerald-400 font-medium">Available 9:00 AM - 8:30 PM everyday</p>
+                </div>
+              </div>
+
+              <!-- Social Channels Link Box -->
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="share-2" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="font-bold text-white text-sm block">Official Handles</span>
+                  <div class="flex flex-col gap-1 mt-1">
+                    <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline flex items-center gap-1">
+                      <i data-lucide="facebook" class="w-3.5 h-3.5"></i> Facebook: RK Vision InfoTech
+                    </a>
+                    <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:underline flex items-center gap-1">
+                      <i data-lucide="youtube" class="w-3.5 h-3.5"></i> YouTube: @RKVisionInfotech
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Google Map Location Card -->
+            <div class="rounded-xl overflow-hidden border border-dark-800 bg-dark-950 p-4 relative text-center group hover:border-emerald-500/40 transition">
+              <div class="h-32 bg-dark-850 rounded-lg flex flex-col items-center justify-center text-slate-400 border border-dark-700 relative overflow-hidden">
+                <div class="absolute inset-0 bg-emerald-500/5 pointer-events-none"></div>
+                <i data-lucide="map-pin" class="w-9 h-9 text-emerald-400 mb-1.5 animate-bounce"></i>
+                <span class="text-xs font-bold text-white">RK Vision InfoTech</span>
+                <span class="text-[11px] text-slate-400">Near Jama Masjid, Uttawar Mod, Hathin Road</span>
+              </div>
+              <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="mt-3.5 inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold transition">
+                <i data-lucide="map" class="w-4 h-4"></i> Open in Google Maps (Live Navigation) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Booking & Quote Request Form -->
+        <div class="lg:col-span-7 bg-dark-900 border border-dark-800 rounded-2xl p-7 sm:p-9 shadow-xl">
+          <h3 class="text-xl font-bold text-white mb-1">Book an Inspection / Consultation</h3>
+          <p class="text-xs text-slate-400 mb-6">Our security consultant will call you back promptly to confirm site visit timings.</p>
+
+          <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Your Full Name *</label>
+                <input type="text" id="custName" required placeholder="e.g. Rahul Sharma" class="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-dark-700 text-white text-xs placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Phone Number *</label>
+                <input type="tel" id="custPhone" required placeholder="e.g. 9813680468" class="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-dark-700 text-white text-xs placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Required Solution</label>
+                <select id="custService" class="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-dark-700 text-slate-200 text-xs focus:outline-none focus:border-brand-500">
+                  <option value="CCTV Installation (Home/Shop)">CCTV Installation (Home / Shop)</option>
+                  <option value="Commercial 8-16 Cam CCTV">Commercial 8+ Cam Setup</option>
+                  <option value="Biometric Attendance">Biometric & Door Access Control</option>
+                  <option value="Office Networking / Wi-Fi">Office Networking & Wi-Fi Setup</option>
+                  <option value="Computer AMC / Repair">Computer AMC & IT Support</option>
+                  <option value="Video Door Phone">Video Door Phone / Intercom</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Premise Type</label>
+                <select id="custPremise" class="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-dark-700 text-slate-200 text-xs focus:outline-none focus:border-brand-500">
+                  <option value="Residential Home / Villa">Residential Home / Villa</option>
+                  <option value="Retail Shop / Showroom">Retail Shop / Showroom</option>
+                  <option value="Corporate Office">Corporate Office</option>
+                  <option value="Factory / Warehouse">Factory / Warehouse</option>
+                  <option value="School / Institute">School / Institute</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Address or Specific Requirements</label>
+              <textarea id="custNotes" rows="3" placeholder="Tell us your location (village/colony), number of cameras, or preferred time for visit..." class="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-dark-700 text-white text-xs placeholder:text-slate-600 focus:outline-none focus:border-brand-500"></textarea>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+              <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-400 hover:to-blue-500 text-white font-bold text-xs shadow-lg shadow-brand-500/20 transition flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i> Submit Site Visit Request
+              </button>
+              <button type="button" onclick="sendViaWhatsApp()" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Send on WhatsApp
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-950 border-t border-dark-800 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-lg bg-brand-500 flex items-center justify-center text-dark-950 font-bold">
+              <i data-lucide="cctv" class="w-5 h-5 text-white"></i>
+            </div>
+            <div class="font-extrabold text-base tracking-tight text-white">
+              RK Vision Info<span class="text-brand-400">TECH</span>
+            </div>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-[11px]">
+            Your trusted neighbourhood and commercial partner for next-generation CCTV camera surveillance, optical networking, access control, and complete IT infrastructure in Hathin & Uttawar.
+          </p>
+          <div class="flex items-center space-x-3 text-slate-400">
+            <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-dark-900 border border-dark-800 flex items-center justify-center hover:text-emerald-400 hover:border-emerald-500/40 transition" title="Google Maps Location">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+            </a>
+            <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-dark-900 border border-dark-800 flex items-center justify-center hover:text-blue-400 hover:border-blue-500/40 transition" title="Facebook">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-dark-900 border border-dark-800 flex items-center justify-center hover:text-red-500 hover:border-red-500/40 transition" title="YouTube">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="https://wa.me/919050748933" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-dark-900 border border-dark-800 flex items-center justify-center hover:text-emerald-400 hover:border-emerald-500/40 transition" title="WhatsApp">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h5 class="text-white font-bold text-sm">Solutions</h5>
+          <ul class="space-y-2 text-[11px]">
+            <li><a href="#services" class="hover:text-brand-400 transition">IP 4K CCTV Cameras</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition">Biometric Attendance Systems</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition">Office Mesh Wi-Fi & Cabling</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition">Desktop & Server AMC Support</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition">Video Door Bell & Locks</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h5 class="text-white font-bold text-sm">Authorized Brands</h5>
+          <ul class="space-y-2 text-[11px]">
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> Hikvision Authorized Partner</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> CP PLUS Registered Installer</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> Dahua Technology Partner</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> Western Digital Purple Partner</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> TP-Link Omada Specialist</li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h5 class="text-white font-bold text-sm">Store Hours</h5>
+          <p class="text-[11px] text-slate-400">Monday - Saturday:<br><span class="text-white font-semibold">9:00 AM – 8:30 PM</span></p>
+          <p class="text-[11px] text-slate-400">Sunday:<br><span class="text-amber-400 font-semibold">10:00 AM – 5:00 PM</span></p>
+          <div class="pt-2">
+            <span class="inline-block px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">
+              Site Inspection Available All 7 Days
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t border-dark-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400">
+        <p>© 2026 RK Vision InfoTech CCTV & IT Solutions. All rights reserved.</p>
+        <p class="mt-2 sm:mt-0 flex gap-4">
+          <a href="https://maps.app.goo.gl/LWnC1Bm5HGnkk27C6" target="_blank" class="hover:text-emerald-400 flex items-center gap-1">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Google Maps Location
+          </a>
+          <a href="https://facebook.com/share/1FJLNQ6x6s" target="_blank" class="hover:text-blue-400">Facebook</a>
+          <a href="https://www.youtube.com/@RKVisionInfotech" target="_blank" class="hover:text-red-400">YouTube</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="statusModal" class="fixed inset-0 bg-dark-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-brand-500/40 rounded-2xl max-w-md w-full p-6 text-center shadow-2xl relative">
+      <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+        <i data-lucide="check-circle" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-2" id="modalTitle">Request Received!</h3>
+      <p class="text-xs text-slate-300 mb-6 leading-relaxed" id="modalMessage">
+        Thank you! Our technical team from RK Vision InfoTech will reach out to you shortly to confirm details.
+      </p>
+      <div class="flex gap-3">
+        <button onclick="closeModal()" class="w-full py-2.5 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-200 font-semibold text-xs transition">
+          Close
+        </button>
+        <a id="modalWhatsappBtn" href="#" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Real-time clock for CCTV Monitor
+    function updateClock() {
+      const now = new Date();
+      const yr = now.getFullYear();
+      const mo = String(now.getMonth() + 1).padStart(2, '0');
+      const da = String(now.getDate()).padStart(2, '0');
+      const hr = String(now.getHours()).padStart(2, '0');
+      const mi = String(now.getMinutes()).padStart(2, '0');
+      const se = String(now.getSeconds()).padStart(2, '0');
+      const el = document.getElementById('cam-timestamp');
+      if (el) {
+        el.innerText = `${yr}-${mo}-${da} ${hr}:${mi}:${se}`;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function switchCamera(name) {
+      const targetBox = document.getElementById('target-box');
+      if (targetBox) {
+        const topPos = Math.floor(Math.random() * 40) + 15;
+        const leftPos = Math.floor(Math.random() * 45) + 15;
+        targetBox.style.top = topPos + '%';
+        targetBox.style.left = leftPos + '%';
+      }
+    }
+
+    function triggerAlarmTest() {
+      const targetBox = document.getElementById('target-box');
+      targetBox.classList.add('border-red-500', 'bg-red-500/20');
+      setTimeout(() => {
+        targetBox.classList.remove('border-red-500', 'bg-red-500/20');
+      }, 1500);
+    }
+
+    // -----------------------------------------
+    // CALCULATOR LOGIC (UPDATED DVR PRICES)
+    // -----------------------------------------
+    let currentCameras = 4;
+
+    function setCameraCount(num) {
+      currentCameras = num;
+      document.getElementById('cam-count-label').innerText = `${num} Cameras`;
+      
+      document.querySelectorAll('.calc-cam-btn').forEach(btn => {
+        const count = parseInt(btn.getAttribute('data-cams'));
+        if (count === num) {
+          btn.className = 'calc-cam-btn py-3 px-2 rounded-xl border border-brand-500 bg-brand-500/20 text-center font-bold text-sm text-brand-400 transition';
+        } else {
+          btn.className = 'calc-cam-btn py-3 px-2 rounded-xl border border-dark-800 bg-dark-950 hover:border-brand-500 text-center font-bold text-sm text-slate-300 transition';
+        }
+      });
+
+      updateEstimator();
+    }
+
+    function updateEstimator() {
+      const camType = document.querySelector('input[name="cam_type"]:checked').value;
+      const storageType = document.querySelector('input[name="storage"]:checked').value;
+      const includeInstall = document.getElementById('include_install').checked;
+
+      let camUnitCost = (camType === 'hd') ? 1800 : 3800;
+      
+      // Updated DVR pricing: 4-Channel = 4500, 8-Channel = 5700, 16-Channel = 7500
+      let nvrUnitCost = (camType === 'hd') 
+        ? (currentCameras <= 4 ? 4500 : (currentCameras <= 8 ? 5700 : 7500))
+        : (currentCameras <= 4 ? 4800 : (currentCameras <= 8 ? 7200 : 12500));
+      
+      let storageCost = (storageType === '500gb') ? 2100 : (storageType === '1tb' ? 3400 : 5200);
+      let powerSupplyCost = (camType === 'hd') 
+        ? (currentCameras <= 4 ? 1200 : (currentCameras <= 8 ? 2100 : 3800))
+        : (currentCameras <= 4 ? 2200 : (currentCameras <= 8 ? 3900 : 6500));
+
+      let installCost = includeInstall ? (currentCameras * 400) : 0;
+
+      const camTotal = camUnitCost * currentCameras;
+      const total = camTotal + nvrUnitCost + storageCost + powerSupplyCost + installCost;
+
+      const techName = (camType === 'hd') ? 'HD 1080p Night Vision' : 'IP 4K Ultra PoE';
+      document.getElementById('summary-cam-desc').innerText = `${currentCameras}x ${techName} Cameras`;
+      document.getElementById('summary-cam-price').innerText = `₹${camTotal.toLocaleString('en-IN')}`;
+
+      const hubName = (camType === 'hd') ? `${currentCameras <= 4 ? '4' : (currentCameras <= 8 ? '8' : '16')}-Ch DVR Hub` : `${currentCameras <= 4 ? '4' : (currentCameras <= 8 ? '8' : '16')}-Ch 4K NVR Hub`;
+      document.getElementById('summary-nvr-desc').innerText = hubName;
+      document.getElementById('summary-nvr-price').innerText = `₹${nvrUnitCost.toLocaleString('en-IN')}`;
+
+      const storageLabel = (storageType === '500gb') ? '500GB Surveillance HDD' : (storageType === '1tb' ? '1TB Purple HDD' : '2TB Purple HDD');
+      document.getElementById('summary-storage-desc').innerText = storageLabel;
+      document.getElementById('summary-storage-price').innerText = `₹${storageCost.toLocaleString('en-IN')}`;
+
+      const pwrLabel = (camType === 'hd') ? 'SMPS Power + Connectors' : 'PoE Switch + Cat6 Jack Setup';
+      document.getElementById('summary-power-desc').innerText = pwrLabel;
+      document.getElementById('summary-power-price').innerText = `₹${powerSupplyCost.toLocaleString('en-IN')}`;
+
+      const rowInstall = document.getElementById('row-install');
+      if (includeInstall) {
+        rowInstall.style.display = 'flex';
+        document.getElementById('summary-install-price').innerText = `₹${installCost.toLocaleString('en-IN')}`;
+      } else {
+        rowInstall.style.display = 'none';
+      }
+
+      document.getElementById('total-price').innerText = `₹${total.toLocaleString('en-IN')}*`;
+    }
+
+    function bookCalculatedQuote() {
+      const camType = document.querySelector('input[name="cam_type"]:checked').value;
+      const techName = (camType === 'hd') ? 'HD 1080p' : 'IP 4K PoE';
+      const notes = `I estimated a ${currentCameras}-Camera (${techName}) setup on your website. Please schedule a site visit.`;
+      
+      const noteField = document.getElementById('custNotes');
+      if (noteField) noteField.value = notes;
+
+      const serviceField = document.getElementById('custService');
+      if (serviceField) {
+        serviceField.value = currentCameras <= 4 ? 'CCTV Installation (Home/Shop)' : 'Commercial 8-16 Cam CCTV';
+      }
+
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function bookSpecificPlan(planName) {
+      const noteField = document.getElementById('custNotes');
+      if (noteField) {
+        noteField.value = `Interested in "${planName}". Please share quotation & technician availability.`;
+      }
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showModal(title, msg, whatsappUrl) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalMessage').innerText = msg;
+      if (whatsappUrl) {
+        document.getElementById('modalWhatsappBtn').href = whatsappUrl;
+      }
+      document.getElementById('statusModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('statusModal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const service = document.getElementById('custService').value;
+      const premise = document.getElementById('custPremise').value;
+      const notes = document.getElementById('custNotes').value.trim();
+
+      const encodedMsg = encodeURIComponent(
+        `Hi RK Vision InfoTech,\nName: ${name}\nPhone: ${phone}\nService: ${service}\nPremise: ${premise}\nNotes: ${notes}`
+      );
+      const waUrl = `https://wa.me/919050748933?text=${encodedMsg}`;
+
+      showModal(
+        'Request Confirmed!',
+        `Thank you ${name}. Your request for ${service} has been logged. Our technician will call ${phone} shortly.`,
+        waUrl
+      );
+
+      document.getElementById('leadForm').reset();
+    }
+
+    function sendViaWhatsApp() {
+      const name = document.getElementById('custName').value.trim() || 'Customer';
+      const phone = document.getElementById('custPhone').value.trim() || 'Not specified';
+      const service = document.getElementById('custService').value;
+      const premise = document.getElementById('custPremise').value;
+      const notes = document.getElementById('custNotes').value.trim();
+
+      const text = `*New Inquiry - RK Vision InfoTech*\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n*Premise:* ${premise}\n*Notes:* ${notes || 'Site visit required'}`;
+      window.open(`https://wa.me/919050748933?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    updateEstimator();
+  </script>
+</body>
+</html>
